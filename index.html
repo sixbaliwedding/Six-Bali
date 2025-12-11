@@ -17,7 +17,21 @@
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 1000; }
         .lightbox img { max-width: 90%; max-height: 90%; }
         .close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; }
-    </style>
+        .prev, .next {
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        padding: 10px;
+        transform: translateY(-50%);
+        user-select: none;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+</style>
+
 </head>
 <body>
     <header>
@@ -33,34 +47,60 @@
 
         <div class="gallery">
             <!-- Foto-foto kamu berada di folder "GALLERY W" -->
-            <img src="GALLERY%20W/GALLERY_01.jpg" alt="Photo 1" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_02.jpg" alt="Photo 2" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_03.jpg" alt="Photo 3" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_04.jpg" alt="Photo 4" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_05.jpg" alt="Photo 5" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_06.jpg" alt="Photo 6" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_07.jpg" alt="Photo 7" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_08.jpg" alt="Photo 8" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_09.jpg" alt="Photo 9" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_10.jpg" alt="Photo 10" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_11.jpg" alt="Photo 11" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_12.jpg" alt="Photo 12" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_13.jpg" alt="Photo 13" onclick="openLightbox(this.src)">
-            <img src="GALLERY%20W/GALLERY_14.jpg" alt="Photo 14" onclick="openLightbox(this.src)">
+            <div class="gallery">
+    <img src="GALLERY%20W/GALLERY_01.jpg" onclick="openLightbox(0)">
+    <img src="GALLERY%20W/GALLERY_02.jpg" onclick="openLightbox(1)">
+    <img src="GALLERY%20W/GALLERY_03.jpg" onclick="openLightbox(2)">
+    <img src="GALLERY%20W/GALLERY_04.jpg" onclick="openLightbox(3)">
+    <img src="GALLERY%20W/GALLERY_05.jpg" onclick="openLightbox(4)">
+            <img src="GALLERY%20W/GALLERY_06.jpg" onclick="openLightbox(5)">
+            <img src="GALLERY%20W/GALLERY_07.jpg" onclick="openLightbox(6)">
+            <img src="GALLERY%20W/GALLERY_08.jpg" onclick="openLightbox(7)">
+            <img src="GALLERY%20W/GALLERY_09.jpg" onclick="openLightbox(8)">
+            <img src="GALLERY%20W/GALLERY_10.jpg" onclick="openLightbox(9)">
+            <img src="GALLERY%20W/GALLERY_11.jpg" onclick="openLightbox(10)">
+            <img src="GALLERY%20W/GALLERY_12.jpg" onclick="openLightbox(11)">
+            <img src="GALLERY%20W/GALLERY_13.jpg" onclick="openLightbox(12)">
+            <img src="GALLERY%20W/GALLERY_14.jpg" onclick="openLightbox(13)">
         </div>
+            <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+</div>
+
     </div>
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
         <span class="close">&times;</span>
         <img id="lightbox-img" src="">
     </div>
     <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
-    </script>
+const photos = [
+    "GALLERY W/GALLERY_01.jpg",
+    "GALLERY W/GALLERY_02.jpg",
+    "GALLERY W/GALLERY_03.jpg",
+    "GALLERY W/GALLERY_04.jpg",
+    "GALLERY W/GALLERY_05.jpg"
+];
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById("lightbox-img").src = photos[currentIndex];
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function changeSlide(dir) {
+    currentIndex = (currentIndex + dir + photos.length) % photos.length;
+    document.getElementById("lightbox-img").src = photos[currentIndex];
+}
+</script>
+
 </body>
 </html>
