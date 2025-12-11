@@ -96,7 +96,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Six Bali </h1>
+            <h1>Six Bali</h1>
             <nav>
                 <a href="#about">About</a>
                 <a href="#gallery">Gallery</a>
@@ -196,7 +196,7 @@
             <h2 class="section-title">What Our Clients Say</h2>
             <div class="testimonial-slider" id="testimonial-slider">
                 <div class="testimonial-item">
-                    <p>"Amazing photography! They tured our wedding perfectly."</p>
+                    <p>"Amazing photography! They turned our wedding perfectly."</p>
                     <cite>- Happy Couple</cite>
                 </div>
                 <div class="testimonial-item">
@@ -222,7 +222,7 @@
     </section>
 
     <footer>
-        <p>&copy; Bali Wedding Gallery. All rights reserved.</p>
+        <p>&copy; Six Bali. All rights reserved.</p>
     </footer>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -251,6 +251,7 @@
         ];
 
         let currentIndex = 0;
+        let testimonialIndex = 0;
 
         function openLightbox(index) {
             currentIndex = index;
@@ -262,3 +263,21 @@
             document.getElementById("lightbox").style.display = "none";
         }
 
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = photos.length - 1;
+            if (currentIndex >= photos.length) currentIndex = 0;
+            document.getElementById("lightbox-img").src = photos[currentIndex];
+        }
+
+        function changeTestimonial(direction) {
+            const slider = document.getElementById("testimonial-slider");
+            testimonialIndex += direction;
+            const totalItems = slider.children.length;
+            if (testimonialIndex < 0) testimonialIndex = totalItems - 1;
+            if (testimonialIndex >= totalItems) testimonialIndex = 0;
+            slider.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>
