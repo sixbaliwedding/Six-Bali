@@ -72,6 +72,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
     .gallery-item img {
       width: 100%;
@@ -95,7 +96,6 @@
       color: #fff;
       font-size: 1.5em;
       font-weight: bold;
-      cursor: pointer;
     }
     .gallery-item:hover .overlay {
       opacity: 1;
@@ -194,6 +194,7 @@
       cursor: pointer;
       transition: color 0.3s;
       user-select: none;
+      z-index: 1001;
     }
     .close:hover {
       color: #cce7ff;
@@ -208,6 +209,7 @@
       padding: 20px;
       transition: color 0.3s;
       user-select: none;
+      z-index: 1001;
     }
     .prev { left: 20px; }
     .next { right: 20px; }
@@ -238,6 +240,7 @@
       </nav>
     </div>
   </header>
+
   <section class="hero">
     <div class="overlay"></div>
     <div class="content">
@@ -246,6 +249,7 @@
       <a href="#gallery" class="btn">View Our Work</a>
     </div>
   </section>
+
   <section id="about" class="about">
     <div class="container">
       <h2 class="section-title">About Us</h2>
@@ -258,69 +262,29 @@
       </div>
     </div>
   </section>
+
   <section id="gallery" class="gallery">
     <div class="container">
       <h2 class="section-title">Our Gallery</h2>
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_01.jpg" onclick="openLightbox(0)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_02.jpg" onclick="openLightbox(1)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_03.jpg" onclick="openLightbox(2)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_04.jpg" onclick="openLightbox(3)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_05.jpg" onclick="openLightbox(4)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_06.jpg" onclick="openLightbox(5)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_07.jpg" onclick="openLightbox(6)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_08.jpg" onclick="openLightbox(7)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_09.jpg" onclick="openLightbox(8)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_10.jpg" onclick="openLightbox(9)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_11.jpg" onclick="openLightbox(10)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_12.jpg" onclick="openLightbox(11)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_13.jpg" onclick="openLightbox(12)" alt="" />
-          <div class="overlay">View</div>
-        </div>
-        <div class="gallery-item">
-          <img src="GALLERY W/GALLERY_14.jpg" onclick="openLightbox(13)" alt="" />
-          <div class="overlay">View</div>
-        </div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_01.jpg" alt="Photo 1" onclick="openLightbox(0)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_02.jpg" alt="Photo 2" onclick="openLightbox(1)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_03.jpg" alt="Photo 3" onclick="openLightbox(2)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_04.jpg" alt="Photo 4" onclick="openLightbox(3)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_05.jpg" alt="Photo 5" onclick="openLightbox(4)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_06.jpg" alt="Photo 6" onclick="openLightbox(5)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_07.jpg" alt="Photo 7" onclick="openLightbox(6)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_08.jpg" alt="Photo 8" onclick="openLightbox(7)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_09.jpg" alt="Photo 9" onclick="openLightbox(8)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_10.jpg" alt="Photo 10" onclick="openLightbox(9)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_11.jpg" alt="Photo 11" onclick="openLightbox(10)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_12.jpg" alt="Photo 12" onclick="openLightbox(11)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_13.jpg" alt="Photo 13" onclick="openLightbox(12)" /><div class="overlay">View</div></div>
+        <div class="gallery-item"><img src="GALLERY W/GALLERY_14.jpg" alt="Photo 14" onclick="openLightbox(13)" /><div class="overlay">View</div></div>
       </div>
     </div>
   </section>
+
   <section class="testimonial">
     <div class="container">
       <h2 class="section-title">What Our Clients Say</h2>
@@ -338,6 +302,7 @@
       <button class="testimonial-nav next" onclick="changeTestimonial(1)">&#10095;</button>
     </div>
   </section>
+
   <section id="contact" class="contact">
     <div class="container">
       <h2 class="section-title">Contact Us</h2>
@@ -349,15 +314,19 @@
       </form>
     </div>
   </section>
+
   <footer>
     <p>&copy; Six Bali. All rights reserved.</p>
   </footer>
+
+  <!-- Lightbox -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="close" onclick="closeLightbox(event)">&times;</span>
     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
     <img id="lightbox-img" src="" alt="Lightbox Image" />
     <span class="next" onclick="changeSlide(1)">&#10095;</span>
   </div>
+
   <script>
     const photos = [
       "GALLERY W/GALLERY_01.jpg",
@@ -375,24 +344,29 @@
       "GALLERY W/GALLERY_13.jpg",
       "GALLERY W/GALLERY_14.jpg"
     ];
+
     let currentIndex = 0;
     let testimonialIndex = 0;
+
     function openLightbox(index) {
       currentIndex = index;
       document.getElementById("lightbox-img").src = photos[currentIndex];
       document.getElementById("lightbox").style.display = "flex";
     }
+
     function closeLightbox(e) {
       if (e.target.id === 'lightbox' || e.target.classList.contains('close')) {
         document.getElementById("lightbox").style.display = "none";
       }
     }
+
     function changeSlide(direction) {
       currentIndex += direction;
       if (currentIndex < 0) currentIndex = photos.length - 1;
       if (currentIndex >= photos.length) currentIndex = 0;
       document.getElementById("lightbox-img").src = photos[currentIndex];
     }
+
     function changeTestimonial(direction) {
       const slider = document.getElementById("testimonial-slider");
       testimonialIndex += direction;
