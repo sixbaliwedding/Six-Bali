@@ -2,290 +2,263 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Six Bali Wedding</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Six Bali - Photographer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    a { text-decoration: none; color: inherit; transition: color 0.3s; }
 
-    header {
-      background: #003366;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 2em;
-      font-weight: 600;
-    }
+    header { background-color: #003366; color: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    header .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header h1 { font-size: 2.5em; font-weight: 700; }
+    nav { display: flex; }
+    nav a { margin: 0 20px; font-weight: 500; }
+    nav a:hover { color: #cce7ff; }
 
-    .section-title {
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: 700;
-      margin: 40px 0 20px;
+    .hero {
+      background: linear-gradient(rgba(0,51,102,0.6), rgba(0,51,102,0.6)),
+                  url('GALLERY W/GALLERY_01.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff; position: relative;
     }
-
-    /* ABOUT US PHOTO */
-    .about {
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px;
+    .hero .overlay {
+      background: rgba(0,51,102,0.4);
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     }
+    .hero .content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero h2 { font-size: 4em; margin-bottom: 20px; font-weight: 700; }
+    .hero p { font-size: 1.5em; margin-bottom: 30px; font-weight: 300; }
+    .hero .btn { background-color: #003366; color: #fff; padding: 15px 30px; border-radius: 5px; font-weight: 500; transition: background 0.3s; }
+    .hero .btn:hover { background-color: #cce7ff; color: #003366; }
 
-    .about .container {
-      width: 80%;
-      text-align: center;
-    }
+    section { padding: 80px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-title { text-align: center; margin-bottom: 40px; color: #003366; font-size: 2.5em; }
 
-    .about-photo {
-      position: relative;
-      width: 60%;
-      margin: 0 auto;
+    .about { background-color: #fff; }
+    .about .content { display: flex; align-items: center; gap: 40px; position: relative; }
+    .about img {
+      width: 50%; border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       cursor: pointer;
     }
 
-    .about-photo img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .about-photo .overlay {
+    /* Overlay About Us */
+    .about .overlay {
       position: absolute;
-      top: 0;
       left: 0;
-      width: 100%;
+      width: 50%;
       height: 100%;
-      background: rgba(0, 51, 102, 0.6);
+      background: rgba(0,51,102,0.6);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 2em;
-      font-weight: 600;
       opacity: 0;
-      border-radius: 12px;
-      transition: 0.3s;
+      font-size: 2em;
+      font-weight: bold;
+      transition: opacity 0.3s;
+      pointer-events: none;
     }
+    .about img:hover + .overlay { opacity: 1; }
 
-    .about-photo:hover .overlay {
-      opacity: 1;
+    .about .text { flex: 1; }
+    .about h3 { font-size: 2em; margin-bottom: 20px; color: #003366; }
+    .about p { font-size: 1.1em; line-height: 1.8; }
+
+    .gallery { background-color: #f9f9f9; }
+    .gallery-main { display: flex; justify-content: center; align-items: center; margin: 0 auto; max-width: 800px; }
+    .gallery-main .gallery-item {
+      width: 100%; height: 500px; position: relative; overflow: hidden;
+      border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
     }
-
-    .text {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2em;
+    .gallery-main .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;
     }
+    .gallery-main .gallery-item:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+    .gallery-main .gallery-item:hover img { transform: scale(1.05); }
 
-    /* LIGHTBOX */
+    .gallery-main .gallery-item .overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,51,102,0.7);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+      color: #fff; font-size: 2em; font-weight: bold;
+    }
+    .gallery-main .gallery-item:hover .overlay { opacity: 1; }
+
+    .testimonial { background-color: #003366; color: #fff; }
+    .testimonial-slider { display: flex; overflow: hidden; position: relative; transition: transform 0.4s ease; }
+    .testimonial-item { min-width: 100%; padding: 40px; text-align: center; }
+    .testimonial-item p { font-size: 1.2em; font-style: italic; margin-bottom: 20px; }
+
+    footer { background-color: #003366; color: #fff; text-align: center; padding: 20px 0; }
+
     .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+      justify-content: center; align-items: center;
+      z-index: 1000; animation: fadeIn 0.3s;
     }
 
     .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
+      max-width: 80%; max-height: 80%;
+      border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .lightbox .close,
-    .lightbox .prev,
-    .lightbox .next {
-      position: absolute;
-      top: 50%;
-      font-size: 3em;
-      color: white;
-      cursor: pointer;
-      user-select: none;
+    .close {
+      position: absolute; top: 20px; right: 20px;
+      color: #fff; font-size: 40px; cursor: pointer; z-index: 1001;
     }
 
-    .lightbox .close {
-      top: 20px;
-      right: 40px;
-      font-size: 2.8em;
+    .prev, .next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      color: #fff; font-size: 50px; cursor: pointer;
+      padding: 20px; z-index: 1001;
     }
+    .prev { left: 20px; }
+    .next { right: 20px; }
 
-    .lightbox .prev {
-      left: 60px;
-      transform: translateY(-50%);
-    }
-
-    .lightbox .next {
-      right: 60px;
-      transform: translateY(-50%);
-    }
-
-    /* OUR WORK GALLERY */
-    .gallery {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .gallery .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-gap: 20px;
-      width: 80%;
-      margin: auto;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
+    @media (max-width: 768px) {
+      .about .content { flex-direction: column; }
+      .about img { width: 100%; }
     }
   </style>
 </head>
 
 <body>
 
-<header>Six Bali Wedding</header>
+<header>
+  <div class="container">
+    <h1>Six Bali</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>Capturing Your Best Moment in Bali</h2>
+    <p>Professional photography that tells your unique story with elegance and passion.</p>
+    <a href="#gallery" class="btn">View Our Work</a>
+  </div>
+</section>
 
-<!-- ABOUT US -->
 <section id="about" class="about">
   <div class="container">
     <h2 class="section-title">About Us</h2>
 
-    <div class="about-photo" onclick="openAboutLightbox(0)">
-      <img src="portosix/porto1.png" alt="About Us">
+    <div class="content">
+      <img src="portosix/porto1.png" alt="About Us" onclick="openAboutLightbox(0)" />
       <div class="overlay">View All Photos</div>
+
+      <div class="text">
+        <h3>Passionate Photographers</h3>
+        <p>We specialize in capturing the magic of Bali. With years of experience, we blend creativity and emotion to create timeless memories. Our team is dedicated to making your special day unforgettable.</p>
+      </div>
     </div>
 
-    <div class="text">
-      <p>
-        Six Bali Wedding adalah penyedia jasa dokumentasi pernikahan profesional...
-      </p>
-    </div>
   </div>
 </section>
 
-
-<!-- OUR WORK -->
 <section id="gallery" class="gallery">
-  <h2 class="section-title">Our Work</h2>
+  <div class="container">
+    <h2 class="section-title">Our Gallery</h2>
 
-  <div class="grid">
-    <img src="GALLERY W/GALLERY_01.jpg" onclick="openLightbox(0)">
-    <img src="GALLERY W/GALLERY_02.jpg" onclick="openLightbox(1)">
-    <img src="GALLERY W/GALLERY_03.jpg" onclick="openLightbox(2)">
-    <img src="GALLERY W/GALLERY_04.jpg" onclick="openLightbox(3)">
-    <img src="GALLERY W/GALLERY_05.jpg" onclick="openLightbox(4)">
-    <img src="GALLERY W/GALLERY_06.jpg" onclick="openLightbox(5)">
-    <img src="GALLERY W/GALLERY_07.jpg" onclick="openLightbox(6)">
-    <img src="GALLERY W/GALLERY_08.jpg" onclick="openLightbox(7)">
-    <img src="GALLERY W/GALLERY_09.jpg" onclick="openLightbox(8)">
-    <img src="GALLERY W/GALLERY_10.jpg" onclick="openLightbox(9)">
-    <img src="GALLERY W/GALLERY_11.jpg" onclick="openLightbox(10)">
-    <img src="GALLERY W/GALLERY_12.jpg" onclick="openLightbox(11)">
-    <img src="GALLERY W/GALLERY_13.jpg" onclick="openLightbox(12)">
-    <img src="GALLERY W/GALLERY_14.jpg" onclick="openLightbox(13)">
+    <div class="gallery-main">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="GALLERY W/GALLERY_01.jpg" alt="Gallery Thumbnail">
+        <div class="overlay">View All Photos</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
 
-<!-- LIGHTBOX -->
+<footer>
+  <p>&copy; Six Bali. All rights reserved.</p>
+</footer>
+
+<!-- Lightbox -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
   <span class="close" onclick="closeLightbox(event)">&times;</span>
   <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-  <img id="lightbox-img" src="">
+  <img id="lightbox-img" src="" alt="">
   <span class="next" onclick="changeSlide(1)">&#10095;</span>
 </div>
 
-
 <script>
-  /* GALLERY WORK */
+
   const photos = [
-    "GALLERY W/GALLERY_01.jpg",
-    "GALLERY W/GALLERY_02.jpg",
-    "GALLERY W/GALLERY_03.jpg",
-    "GALLERY W/GALLERY_04.jpg",
-    "GALLERY W/GALLERY_05.jpg",
-    "GALLERY W/GALLERY_06.jpg",
-    "GALLERY W/GALLERY_07.jpg",
-    "GALLERY W/GALLERY_08.jpg",
-    "GALLERY W/GALLERY_09.jpg",
-    "GALLERY W/GALLERY_10.jpg",
-    "GALLERY W/GALLERY_11.jpg",
-    "GALLERY W/GALLERY_12.jpg",
-    "GALLERY W/GALLERY_13.jpg",
-    "GALLERY W/GALLERY_14.jpg"
+    "GALLERY W/GALLERY_01.jpg","GALLERY W/GALLERY_02.jpg","GALLERY W/GALLERY_03.jpg",
+    "GALLERY W/GALLERY_04.jpg","GALLERY W/GALLERY_05.jpg","GALLERY W/GALLERY_06.jpg",
+    "GALLERY W/GALLERY_07.jpg","GALLERY W/GALLERY_08.jpg","GALLERY W/GALLERY_09.jpg",
+    "GALLERY W/GALLERY_10.jpg","GALLERY W/GALLERY_11.jpg","GALLERY W/GALLERY_12.jpg",
+    "GALLERY W/GALLERY_13.jpg","GALLERY W/GALLERY_14.jpg"
   ];
 
-  /* ABOUT US GALLERY (PNG) */
   const aboutPhotos = [
-    "portosix/porto1.png",
-    "portosix/porto2.png",
-    "portosix/porto3.png",
-    "portosix/porto4.png",
-    "portosix/porto5.png",
-    "portosix/porto6.png",
-    "portosix/porto7.png",
-    "portosix/porto8.png",
-    "portosix/porto9.png",
-    "portosix/porto10.png",
-    "portosix/porto11.png",
-    "portosix/porto12.png"
+    "portosix/porto1.png","portosix/porto2.png","portosix/porto3.png",
+    "portosix/porto4.png","portosix/porto5.png","portosix/porto6.png",
+    "portosix/porto7.png","portosix/porto8.png","portosix/porto9.png",
+    "portosix/porto10.png","portosix/porto11.png","portosix/porto12.png"
   ];
 
-  let galleryMode = "work";
   let currentIndex = 0;
-  let currentAboutIndex = 0;
+  let isAboutMode = false;
 
   function openLightbox(index) {
-    galleryMode = "work";
+    isAboutMode = false;
     currentIndex = index;
     document.getElementById("lightbox-img").src = photos[currentIndex];
     document.getElementById("lightbox").style.display = "flex";
   }
 
   function openAboutLightbox(index) {
-    galleryMode = "about";
-    currentAboutIndex = index;
-    document.getElementById("lightbox-img").src = aboutPhotos[currentAboutIndex];
+    isAboutMode = true;
+    currentIndex = index;
+    document.getElementById("lightbox-img").src = aboutPhotos[currentIndex];
     document.getElementById("lightbox").style.display = "flex";
   }
 
-  function closeLightbox(event) {
-    if (event.target.classList.contains("lightbox") || event.target.classList.contains("close")) {
+  function closeLightbox(e) {
+    if (e.target.id === "lightbox" || e.target.classList.contains("close")) {
       document.getElementById("lightbox").style.display = "none";
+      isAboutMode = false;
     }
   }
 
   function changeSlide(direction) {
-    if (galleryMode === "work") {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = photos.length - 1;
-      if (currentIndex >= photos.length) currentIndex = 0;
-      document.getElementById("lightbox-img").src = photos[currentIndex];
-    } 
-    
-    else {
-      currentAboutIndex += direction;
-      if (currentAboutIndex < 0) currentAboutIndex = aboutPhotos.length - 1;
-      if (currentAboutIndex >= aboutPhotos.length) currentAboutIndex = 0;
-      document.getElementById("lightbox-img").src = aboutPhotos[currentAboutIndex];
-    }
+    const activeArray = isAboutMode ? aboutPhotos : photos;
+
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = activeArray.length - 1;
+    if (currentIndex >= activeArray.length) currentIndex = 0;
+
+    document.getElementById("lightbox-img").src = activeArray[currentIndex];
   }
+
 </script>
 
 </body>
